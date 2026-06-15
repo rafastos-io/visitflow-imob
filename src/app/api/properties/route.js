@@ -35,7 +35,7 @@ export async function POST(req) {
       suites: b.suites ?? null,
       parking_spaces: b.parking_spaces ?? null,
       price: b.price ?? null,
-      status: b.status || "Disponivel",
+      status: b.status || "Disponível",
     })
     .select()
     .single();

@@ -2,7 +2,7 @@
 
 **VisitFlow Imob** é uma plataforma integrada de gestão de visitas imobiliárias para corretores e gerentes. Projeto desenvolvido como **Atividade Substitutiva da Global Solution**, demonstrando integração real entre **app mobile**, **interface web** e **backend com API REST**.
 
-> Aluno: **<SEU NOME COMPLETO>** — RM: **<SEU RM>**
+> Aluno: **Rafael Santos** — RM: **560567**
 
 ## Slogan
 Gestão inteligente de visitas imobiliárias.

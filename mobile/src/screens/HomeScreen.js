@@ -35,20 +35,20 @@ export default function HomeScreen({ navigation }) {
       contentContainerStyle={{ padding: 16 }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
-      <Text style={styles.greeting}>Ola, {user?.name?.split(" ")[0]} 👋</Text>
+      <Text style={styles.greeting}>Olá, {user?.name?.split(" ")[0]} 👋</Text>
       <Text style={styles.sub}>{todayVisits.length} visita(s) hoje</Text>
 
       {pending.length > 0 && (
         <View style={styles.alertBox}>
           <Text style={styles.alertText}>
-            ⚠ Voce possui {pending.length} visita(s) que ja deveriam ter sido realizadas. Atualize o status e responda o quiz.
+            ⚠ Você possui {pending.length} visita(s) que já deveriam ter sido realizadas. Atualize o status e responda o quiz.
           </Text>
         </View>
       )}
 
       {next && (
         <>
-          <Text style={styles.section}>Proxima visita</Text>
+          <Text style={styles.section}>Próxima visita</Text>
           <VisitCard visit={next} onPress={() => navigation.navigate("VisitDetail", { id: next.id })} />
         </>
       )}

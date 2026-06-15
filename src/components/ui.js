@@ -28,7 +28,7 @@ export function StatusBadge({ status }) {
 
 export function Stars({ score }) {
   if (score === null || score === undefined) {
-    return <span className="text-xs text-graphite/50">nao avaliada</span>;
+    return <span className="text-xs text-graphite/50">não avaliada</span>;
   }
   return (
     <span aria-label={`Nota ${score} de 5`} className="text-sm">
@@ -41,7 +41,7 @@ export function Stars({ score }) {
 export function formatDate(iso) {
   if (!iso) return "—";
   const d = new Date(iso);
-  return d.toLocaleDateString("pt-BR", {
+  return d.toLocaleString("pt-BR", {
     day: "2-digit",
     month: "2-digit",
     hour: "2-digit",

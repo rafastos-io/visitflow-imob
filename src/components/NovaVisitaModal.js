@@ -80,12 +80,12 @@ export default function NovaVisitaModal({ onClose, onSaved }) {
         )}
 
         <div>
-          <label className="label" htmlFor="nv-date">Data e horario</label>
+          <label className="label" htmlFor="nv-date">Data e horário</label>
           <input id="nv-date" type="datetime-local" className="input" value={form.scheduled_at} onChange={(e) => setForm((f) => ({ ...f, scheduled_at: e.target.value }))} />
         </div>
 
         <div>
-          <span className="label">Roteiro de imoveis ({form.property_ids.length})</span>
+          <span className="label">Roteiro de imóveis ({form.property_ids.length})</span>
           <div className="max-h-44 space-y-1 overflow-y-auto rounded-lg border border-graphite/10 p-2">
             {properties.map((p) => (
               <label key={p.id} className="flex cursor-pointer items-center gap-2 rounded p-1 text-sm hover:bg-cream">

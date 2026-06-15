@@ -23,7 +23,7 @@ export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>VisitFlow <Text style={{ color: colors.orange }}>Imob</Text></Text>
-      <Text style={styles.subtitle}>Gestao inteligente de visitas</Text>
+      <Text style={styles.subtitle}>Gestão inteligente de visitas</Text>
 
       <View style={styles.card}>
         <Text style={styles.label}>E-mail</Text>

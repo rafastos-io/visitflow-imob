@@ -4,15 +4,17 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getStoredUser, logout } from "@/lib/api-client";
+import { ToastProvider } from "@/components/Toast";
+import NotificationsBell from "@/components/NotificationsBell";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: "📊" },
   { href: "/kanban", label: "Kanban", icon: "🗂️" },
   { href: "/clientes", label: "Clientes", icon: "👥" },
-  { href: "/imoveis", label: "Imoveis", icon: "🏠" },
+  { href: "/imoveis", label: "Imóveis", icon: "🏠" },
   { href: "/corretores", label: "Corretores", icon: "🧑‍💼", managerOnly: true },
   { href: "/clientes-quentes", label: "Clientes Quentes", icon: "🔥" },
-  { href: "/relatorios", label: "Relatorios", icon: "📈" },
+  { href: "/relatorios", label: "Relatórios", icon: "📈" },
 ];
 
 export default function AppLayout({ children }) {
@@ -33,6 +35,7 @@ export default function AppLayout({ children }) {
   const nav = NAV.filter((item) => !item.managerOnly || user.role === "GERENTE");
 
   return (
+    <ToastProvider>
     <div className="flex min-h-screen bg-cream">
       <aside className="flex w-60 flex-col bg-graphite text-white" aria-label="Menu principal">
         <div className="px-5 py-6">
@@ -67,7 +70,13 @@ export default function AppLayout({ children }) {
         </div>
       </aside>
 
-      <main className="flex-1 overflow-x-auto p-6">{children}</main>
+      <div className="flex flex-1 flex-col overflow-x-auto">
+        <header className="flex items-center justify-end gap-3 border-b border-graphite/10 bg-cream px-6 py-3">
+          <NotificationsBell />
+        </header>
+        <main className="flex-1 p-6">{children}</main>
+      </div>
     </div>
+    </ToastProvider>
   );
 }

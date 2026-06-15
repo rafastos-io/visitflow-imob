@@ -40,7 +40,7 @@ export default function VisitDetailScreen({ route, navigation }) {
         </View>
       </View>
 
-      <Text style={styles.section}>Roteiro de imoveis ({props.length})</Text>
+      <Text style={styles.section}>Roteiro de imóveis ({props.length})</Text>
       {props.map((vp) => (
         <View key={vp.property?.id} style={styles.propCard}>
           <Text style={styles.propTitle}>{vp.visit_order}. {vp.property?.title}</Text>
@@ -57,7 +57,7 @@ export default function VisitDetailScreen({ route, navigation }) {
         )}
         {(visit.status === "CONFIRMADA" || visit.status === "REALIZADA" || visit.needs_update) && (
           <TouchableOpacity style={styles.btnPrimary} onPress={() => navigation.navigate("Quiz", { id: visit.id, client: visit.client?.name })}>
-            <Text style={styles.btnText}>Responder quiz pos-visita</Text>
+            <Text style={styles.btnText}>Responder quiz pós-visita</Text>
           </TouchableOpacity>
         )}
         {["MARCADA", "CONFIRMADA"].includes(visit.status) && (

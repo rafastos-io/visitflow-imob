@@ -11,7 +11,7 @@ export default function VisitCard({ visit, onPress }) {
       <Text style={styles.client}>{visit.client?.name}</Text>
       <Text style={styles.meta}>Corretor: {visit.broker?.name}</Text>
       <Text style={styles.meta}>{formatDate(visit.scheduled_at)}</Text>
-      <Text style={styles.meta}>Roteiro: {count} {count === 1 ? "imovel" : "imoveis"}</Text>
+      <Text style={styles.meta}>Roteiro: {count} {count === 1 ? "imóvel" : "imóveis"}</Text>
       <View style={styles.row}>
         <Text style={styles.badge}>{STATUS_LABELS[visit.status]}</Text>
         <Text style={styles.stars}>{stars(visit.score)}</Text>

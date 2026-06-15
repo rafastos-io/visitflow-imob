@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api-client";
 import Modal from "@/components/Modal";
+import { useToast } from "@/components/Toast";
 
 export default function ClientesPage() {
+  const toast = useToast();
   const [clients, setClients] = useState([]);
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", notes: "" });
@@ -21,6 +23,7 @@ export default function ClientesPage() {
       await api("/clients", { method: "POST", body: JSON.stringify(form) });
       setShow(false);
       setForm({ name: "", phone: "", email: "", notes: "" });
+      toast("Cliente cadastrado");
       load();
     } catch (e) {
       setError(e.message);
@@ -43,7 +46,7 @@ export default function ClientesPage() {
               <th className="px-4 py-3">Nome</th>
               <th className="px-4 py-3">Telefone</th>
               <th className="px-4 py-3">E-mail</th>
-              <th className="px-4 py-3">Observacoes</th>
+              <th className="px-4 py-3">Observações</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +71,7 @@ export default function ClientesPage() {
             <div><label className="label" htmlFor="c-name">Nome</label><input id="c-name" className="input" value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} /></div>
             <div><label className="label" htmlFor="c-phone">Telefone</label><input id="c-phone" className="input" value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} /></div>
             <div><label className="label" htmlFor="c-email">E-mail</label><input id="c-email" className="input" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} /></div>
-            <div><label className="label" htmlFor="c-notes">Observacoes</label><textarea id="c-notes" className="input" rows={2} value={form.notes} onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))} /></div>
+            <div><label className="label" htmlFor="c-notes">Observações</label><textarea id="c-notes" className="input" rows={2} value={form.notes} onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))} /></div>
             <div className="flex justify-end gap-2">
               <button className="btn-ghost" onClick={() => setShow(false)}>Cancelar</button>
               <button className="btn-primary" onClick={save}>Salvar</button>

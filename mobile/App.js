@@ -29,7 +29,7 @@ function Tabs() {
         tabBarInactiveTintColor: colors.graphite,
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} options={{ title: "Inicio" }} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ title: "Início" }} />
       <Tab.Screen name="Agenda" component={AgendaScreen} />
       <Tab.Screen name="Quentes" component={HotClientsScreen} options={{ title: "Quentes" }} />
       <Tab.Screen name="Perfil" component={ProfileScreen} />
@@ -61,7 +61,7 @@ function Root() {
         <>
           <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
           <Stack.Screen name="VisitDetail" component={VisitDetailScreen} options={{ title: "Detalhe da visita" }} />
-          <Stack.Screen name="Quiz" component={QuizScreen} options={{ title: "Quiz pos-visita" }} />
+          <Stack.Screen name="Quiz" component={QuizScreen} options={{ title: "Quiz pós-visita" }} />
         </>
       )}
     </Stack.Navigator>

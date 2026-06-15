@@ -7,8 +7,8 @@
 
 ## Atividade Substitutiva · Global Solution
 
-**Aluno:** <NOME COMPLETO>
-**RM:** <RM>
+**Aluno:** Rafael Santos
+**RM:** 560567
 
 ---
 

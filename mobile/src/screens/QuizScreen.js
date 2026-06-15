@@ -4,14 +4,14 @@ import { api } from "../services/api";
 import { colors, stars } from "../theme";
 
 const QUESTIONS = [
-  { key: "was_completed", q: "A visita foi realizada?", options: ["Sim", "Nao", "Parcialmente"] },
-  { key: "visited_count", q: "Quantos imoveis foram visitados?", options: ["1", "2 a 3", "4 a 5", "Mais de 5"] },
-  { key: "interest_level", q: "O cliente demonstrou interesse?", options: ["Nao", "Pouco", "Medio", "Alto"] },
-  { key: "has_proposal_intent", q: "Algum imovel gerou possibilidade de proposta?", options: ["Sim", "Nao"], bool: true },
+  { key: "was_completed", q: "A visita foi realizada?", options: ["Sim", "Não", "Parcialmente"] },
+  { key: "visited_count", q: "Quantos imóveis foram visitados?", options: ["1", "2 a 3", "4 a 5", "Mais de 5"] },
+  { key: "interest_level", q: "O cliente demonstrou interesse?", options: ["Não", "Pouco", "Médio", "Alto"] },
+  { key: "has_proposal_intent", q: "Algum imóvel gerou possibilidade de proposta?", options: ["Sim", "Não"], bool: true },
   {
     key: "general_perception",
-    q: "Qual foi a percepcao geral do cliente?",
-    options: ["Nao gostou dos imoveis", "Gostou parcialmente", "Gostou, mas quer ver novas opcoes", "Gostou muito", "Quer fazer proposta"],
+    q: "Qual foi a percepção geral do cliente?",
+    options: ["Não gostou dos imóveis", "Gostou parcialmente", "Gostou, mas quer ver novas opções", "Gostou muito", "Quer fazer proposta"],
   },
 ];
 

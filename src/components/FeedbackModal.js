@@ -5,13 +5,13 @@ import Modal from "./Modal";
 import { api } from "@/lib/api-client";
 
 const Q = {
-  was_completed: ["Sim", "Nao", "Parcialmente"],
+  was_completed: ["Sim", "Não", "Parcialmente"],
   visited_count: ["1", "2 a 3", "4 a 5", "Mais de 5"],
-  interest_level: ["Nao", "Pouco", "Medio", "Alto"],
+  interest_level: ["Não", "Pouco", "Médio", "Alto"],
   general_perception: [
-    "Nao gostou dos imoveis",
+    "Não gostou dos imóveis",
     "Gostou parcialmente",
-    "Gostou, mas quer ver novas opcoes",
+    "Gostou, mas quer ver novas opções",
     "Gostou muito",
     "Quer fazer proposta",
   ],
@@ -43,7 +43,7 @@ export default function FeedbackModal({ visit, onClose, onSaved }) {
   const [form, setForm] = useState({
     was_completed: "Sim",
     visited_count: "2 a 3",
-    interest_level: "Medio",
+    interest_level: "Médio",
     has_proposal_intent: false,
     general_perception: "Gostou parcialmente",
     notes: "",
@@ -72,14 +72,14 @@ export default function FeedbackModal({ visit, onClose, onSaved }) {
   }
 
   return (
-    <Modal title={`Quiz pos-visita - ${visit.client?.name || ""}`} onClose={onClose}>
+    <Modal title={`Quiz pós-visita · ${visit.client?.name || ""}`} onClose={onClose}>
       <div className="space-y-4">
         <Field label="1. A visita foi realizada?" options={Q.was_completed} value={form.was_completed} onChange={(v) => set("was_completed", v)} />
-        <Field label="2. Quantos imoveis foram visitados?" options={Q.visited_count} value={form.visited_count} onChange={(v) => set("visited_count", v)} />
+        <Field label="2. Quantos imóveis foram visitados?" options={Q.visited_count} value={form.visited_count} onChange={(v) => set("visited_count", v)} />
         <Field label="3. O cliente demonstrou interesse?" options={Q.interest_level} value={form.interest_level} onChange={(v) => set("interest_level", v)} />
 
         <fieldset className="space-y-1">
-          <legend className="label">4. Algum imovel gerou possibilidade de proposta?</legend>
+          <legend className="label">4. Algum imóvel gerou possibilidade de proposta?</legend>
           <div className="flex gap-2">
             {[true, false].map((b) => (
               <button
@@ -90,16 +90,16 @@ export default function FeedbackModal({ visit, onClose, onSaved }) {
                   form.has_proposal_intent === b ? "border-orange bg-orange text-white" : "border-graphite/20 bg-white"
                 }`}
               >
-                {b ? "Sim" : "Nao"}
+                {b ? "Sim" : "Não"}
               </button>
             ))}
           </div>
         </fieldset>
 
-        <Field label="5. Percepcao geral do cliente" options={Q.general_perception} value={form.general_perception} onChange={(v) => set("general_perception", v)} />
+        <Field label="5. Percepção geral do cliente" options={Q.general_perception} value={form.general_perception} onChange={(v) => set("general_perception", v)} />
 
         <div>
-          <label className="label" htmlFor="fb-notes">6. Observacoes do corretor</label>
+          <label className="label" htmlFor="fb-notes">6. Observações do corretor</label>
           <textarea id="fb-notes" className="input" rows={2} value={form.notes} onChange={(e) => set("notes", e.target.value)} />
         </div>
 

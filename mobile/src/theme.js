@@ -28,6 +28,6 @@ export function formatDate(iso) {
 }
 
 export function stars(score) {
-  if (score === null || score === undefined) return "Nao avaliada";
+  if (score === null || score === undefined) return "Não avaliada";
   return "★".repeat(score) + "☆".repeat(5 - score);
 }

@@ -29,7 +29,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <header>
         <h2 className="text-2xl font-bold text-graphite">Dashboard</h2>
-        <p className="text-graphite/70">Indicadores gerais da operacao</p>
+        <p className="text-graphite/70">Indicadores gerais da operação</p>
       </header>
 
       <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6" aria-label="Indicadores">
@@ -49,7 +49,7 @@ export default function DashboardPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <section className="card">
-          <h3 className="mb-3 font-semibold text-graphite">Media de estrelas por corretor</h3>
+          <h3 className="mb-3 font-semibold text-graphite">Média de estrelas por corretor</h3>
           <ul className="space-y-2">
             {data.media_estrelas_por_corretor.map((b) => (
               <li key={b.broker_id} className="flex items-center justify-between text-sm">
@@ -61,7 +61,7 @@ export default function DashboardPage() {
         </section>
 
         <section className="card">
-          <h3 className="mb-3 font-semibold text-graphite">Imoveis mais visitados</h3>
+          <h3 className="mb-3 font-semibold text-graphite">Imóveis mais visitados</h3>
           <ul className="space-y-2">
             {data.imoveis_mais_visitados.length === 0 && <li className="text-sm text-graphite/60">Sem dados.</li>}
             {data.imoveis_mais_visitados.map((p) => (

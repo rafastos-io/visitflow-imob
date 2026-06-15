@@ -22,7 +22,7 @@ export default function RelatoriosPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-graphite">Relatorios</h2>
+      <h2 className="text-2xl font-bold text-graphite">Relatórios</h2>
       {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
       <div className="flex flex-wrap gap-3">
@@ -49,7 +49,7 @@ export default function RelatoriosPage() {
               <th className="px-4 py-3">Cliente</th>
               <th className="px-4 py-3">Corretor</th>
               <th className="px-4 py-3">Data</th>
-              <th className="px-4 py-3">Imoveis</th>
+              <th className="px-4 py-3">Imóveis</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3">Nota</th>
             </tr>

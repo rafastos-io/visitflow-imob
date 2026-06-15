@@ -36,7 +36,7 @@ export default function LoginPage() {
           <h1 className="text-3xl font-bold text-graphite">
             VisitFlow <span className="text-orange">Imob</span>
           </h1>
-          <p className="mt-1 text-sm text-graphite/70">Gestao inteligente de visitas imobiliarias</p>
+          <p className="mt-1 text-sm text-graphite/70">Gestão inteligente de visitas imobiliárias</p>
         </div>
 
         <form onSubmit={handleSubmit} className="card space-y-4" aria-label="Formulario de login">
