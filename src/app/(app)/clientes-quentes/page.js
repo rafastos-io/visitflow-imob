@@ -15,8 +15,9 @@ export default function ClientesQuentesPage() {
   return (
     <div className="space-y-4">
       <header>
-        <h2 className="text-2xl font-bold text-graphite">🔥 Clientes Quentes</h2>
-        <p className="text-graphite/70">Oportunidades com nota 4 ou 5</p>
+        <p className="eyebrow">Oportunidades</p>
+        <h2 className="font-display text-3xl font-bold text-graphite">🔥 Clientes Quentes</h2>
+        <p className="text-graphite-soft">Visitas com nota 4 ou 5</p>
       </header>
       {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 

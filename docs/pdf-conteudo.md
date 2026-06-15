@@ -31,21 +31,34 @@ O tema representa uma necessidade real do mercado imobiliário. Corretores lidam
 ## 3. Justificativa de design e experiência do usuário
 
 ### Identidade visual
-Estética moderna, minimalista e baseada em cards, inspirada em Trello, Asana, Monday e ClickUp, com foco em produtividade e clareza.
+A identidade adota o conceito **"corretor premium / planta arquitetônica"**, traduzindo o universo
+imobiliário de alto padrão (plantas baixas, roteiros em mapa e listagens premium). O elemento de
+assinatura é o **roteiro de visita** representado como uma rota com pinos numerados — exatamente o que
+o corretor percorre ao visitar vários imóveis com o mesmo cliente. Uma textura sutil de grade (tipo
+planta baixa) reforça o tema na tela de login e na barra lateral. O resultado é uma interface baseada
+em cards, com foco em produtividade (referências de Trello, Asana, Monday e ClickUp), porém com
+personalidade própria que evita uma aparência genérica.
 
 ### Paleta de cores
 | Cor | Hex | Uso |
 |---|---|---|
-| Grafite escuro | `#5D5D5A` | Menu, títulos, textos principais |
-| Laranja | `#FEA45C` | Botões principais, alertas, destaques |
-| Pêssego | `#FFCCAA` | Badges e cards secundários |
-| Creme | `#FEF9F0` | Fundo geral |
+| Verde-esmeralda profundo | `#0E3B2E` | Barra lateral, títulos, textos e ações primárias |
+| Latão / ouro | `#C99A2E` | Acento de assinatura: item ativo, estrelas, cliente quente, pinos do roteiro |
+| Areia / ouro claro | `#E8D8A8` | Badges e destaques suaves |
+| Sage claro | `#ECEFE8` | Fundo geral da plataforma |
 | Branco | `#FFFFFF` | Cards e áreas de leitura |
+| Terracota / Vermelho | `#C2603F` / `#B23A2E` | Proposta em andamento / cancelamento |
 
-O grafite transmite seriedade e organização; o laranja destaca ações importantes; o pêssego cria áreas de apoio visual; o creme traz leveza ao fundo.
+O esmeralda transmite solidez e confiança (associado a valor e patrimônio); o latão/ouro evoca o
+padrão "imóvel premium" e guia o olhar para as ações e oportunidades mais importantes; o sage claro dá
+um fundo leve e sofisticado, distinto dos fundos neutros usuais; terracota e vermelho comunicam,
+respectivamente, negociação em curso e cancelamento.
 
 ### Tipografia
-**Inter** — fonte moderna, limpa e adequada para interfaces digitais.
+- **Bricolage Grotesque** (display) — títulos e logotipo, conferindo um caráter arquitetônico e
+  contemporâneo, usada com restrição.
+- **Inter** (corpo) — leitura limpa e legível na interface.
+- **JetBrains Mono** (dados) — números, preços, datas e métricas, reforçando precisão e leitura tabular.
 
 ### Navegação
 Simples, com poucos níveis, botões claros e foco na produtividade. Na web, sidebar fixa com as seções principais; no mobile, navegação por abas (Início, Agenda, Quentes, Perfil).
@@ -64,7 +77,7 @@ A arquitetura possui três camadas: **app mobile**, **interface web** e **backen
 O banco armazena usuários, clientes, imóveis, visitas, imóveis vinculados às visitas, respostas do quiz e notificações. Uma visita criada ou atualizada no app aparece imediatamente na web, garantindo sincronização entre corretor e gerente.
 
 ### Stack
-- Web + API REST: **Next.js 15** (App Router) + Tailwind CSS
+- Web + API REST: **Next.js 16** (App Router) + Tailwind CSS
 - App mobile: **React Native + Expo**
 - Banco: **PostgreSQL (Supabase)**
 - Autenticação: **JWT**

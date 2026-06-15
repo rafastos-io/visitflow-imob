@@ -1,11 +1,11 @@
 export const colors = {
-  graphite: "#5D5D5A",
-  orange: "#FEA45C",
-  peach: "#FFCCAA",
-  cream: "#FEF9F0",
+  graphite: "#0E3B2E", // esmeralda profundo (ink / acao primaria)
+  orange: "#C99A2E", // latao/ouro (acento)
+  peach: "#E8D8A8",
+  cream: "#ECEFE8", // sage (fundo)
   white: "#FFFFFF",
-  red: "#D9534F",
-  green: "#4CAF50",
+  red: "#B23A2E",
+  green: "#2E7D6B",
 };
 
 export const STATUS_LABELS = {

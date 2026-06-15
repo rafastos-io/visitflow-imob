@@ -30,7 +30,7 @@ O app mobile e a interface web consomem **a mesma API REST**, servida por route 
 ## Stack
 | Camada | Tecnologia |
 |---|---|
-| Interface web + API REST | Next.js 15 (App Router) + Tailwind CSS |
+| Interface web + API REST | Next.js 16 (App Router) + Tailwind CSS |
 | App mobile | React Native + Expo |
 | Banco de dados | PostgreSQL (Supabase) |
 | Autenticação | JWT (`jsonwebtoken` + `bcryptjs`) |

@@ -22,7 +22,10 @@ export default function RelatoriosPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-graphite">Relatórios</h2>
+      <div>
+        <p className="eyebrow">Análise</p>
+        <h2 className="font-display text-3xl font-bold text-graphite">Relatórios</h2>
+      </div>
       {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
       <div className="flex flex-wrap gap-3">

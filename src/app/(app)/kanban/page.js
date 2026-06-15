@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, getStoredUser } from "@/lib/api-client";
-import { StatusBadge, Stars, formatDate } from "@/components/ui";
+import { StatusBadge, Stars, formatDate, STATUS_SPINE } from "@/components/ui";
 import { useToast } from "@/components/Toast";
 import NovaVisitaModal from "@/components/NovaVisitaModal";
 import FeedbackModal from "@/components/FeedbackModal";
@@ -21,9 +21,8 @@ function VisitCard({ visit, onOpen, onConfirm, onFeedback }) {
   return (
     <article
       onClick={() => onOpen(visit)}
-      className={`card mb-3 cursor-pointer transition hover:shadow-md ${
-        visit.status === "CLIENTE_QUENTE" ? "border-orange ring-1 ring-orange" : ""
-      }`}
+      style={{ borderLeft: `3px solid ${STATUS_SPINE[visit.status] || "#7C8B84"}` }}
+      className="card mb-3 cursor-pointer transition hover:-translate-y-0.5 hover:shadow-card"
       role="button"
       tabIndex={0}
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen(visit)}
@@ -102,10 +101,10 @@ export default function KanbanPage() {
     <div className="space-y-4">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-bold text-graphite">Kanban de visitas</h2>
-          <p className="text-graphite/70">Acompanhamento visual do fluxo</p>
+          <p className="eyebrow">Pipeline</p>
+          <h2 className="font-display text-3xl font-bold text-graphite">Kanban de visitas</h2>
         </div>
-        <button className="btn-primary" onClick={() => setShowNew(true)}>+ Nova visita</button>
+        <button className="btn-gold" onClick={() => setShowNew(true)}>+ Nova visita</button>
       </header>
 
       <div className="flex flex-wrap gap-3">
@@ -131,9 +130,9 @@ export default function KanbanPage() {
           const items = filtered.filter((v) => v.status === col.key);
           return (
             <section key={col.key} className="w-72 flex-shrink-0">
-              <div className="mb-3 flex items-center justify-between rounded-lg bg-graphite px-3 py-2 text-white">
-                <h3 className="text-sm font-semibold">{col.title}</h3>
-                <span className="rounded-full bg-white/20 px-2 text-xs">{items.length}</span>
+              <div className="mb-3 flex items-center justify-between border-b-2 px-1 pb-2" style={{ borderColor: STATUS_SPINE[col.key] }}>
+                <h3 className="text-sm font-semibold text-graphite">{col.title}</h3>
+                <span className="num rounded-full bg-graphite/10 px-2 text-xs font-bold text-graphite">{items.length}</span>
               </div>
               {items.map((v) => (
                 <VisitCard key={v.id} visit={v} onOpen={setDetailVisit} onConfirm={confirmVisit} onFeedback={setFeedbackVisit} />

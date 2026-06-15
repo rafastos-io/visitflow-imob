@@ -27,8 +27,8 @@ function Field({ label, options, value, onChange }) {
             type="button"
             key={o}
             onClick={() => onChange(o)}
-            className={`rounded-lg border px-3 py-1.5 text-sm ${
-              value === o ? "border-orange bg-orange text-white" : "border-graphite/20 bg-white"
+            className={`rounded-lg border px-3 py-1.5 text-sm transition ${
+              value === o ? "border-orange bg-orange font-semibold text-graphite" : "border-graphite/20 bg-white text-graphite hover:bg-cream"
             }`}
           >
             {o}
@@ -86,8 +86,8 @@ export default function FeedbackModal({ visit, onClose, onSaved }) {
                 type="button"
                 key={String(b)}
                 onClick={() => set("has_proposal_intent", b)}
-                className={`rounded-lg border px-3 py-1.5 text-sm ${
-                  form.has_proposal_intent === b ? "border-orange bg-orange text-white" : "border-graphite/20 bg-white"
+                className={`rounded-lg border px-3 py-1.5 text-sm transition ${
+                  form.has_proposal_intent === b ? "border-orange bg-orange font-semibold text-graphite" : "border-graphite/20 bg-white text-graphite hover:bg-cream"
                 }`}
               >
                 {b ? "Sim" : "Não"}

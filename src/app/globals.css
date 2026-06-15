@@ -2,36 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-inter: "Inter", system-ui, sans-serif;
-}
-
 html,
 body {
-  background-color: #fef9f0;
-  color: #5d5d5a;
+  background-color: #ecefe8;
+  color: #0e3b2e;
 }
 
 /* Foco visivel para navegacao por teclado (acessibilidade) */
 *:focus-visible {
-  outline: 2px solid #fea45c;
+  outline: 2px solid #c99a2e;
   outline-offset: 2px;
+}
+
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  /* Numeros tabulares para dados/metricas */
+  .num {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum" 1;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-orange px-4 py-2 font-semibold text-white transition hover:brightness-95 disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-graphite px-4 py-2 font-semibold text-white transition hover:bg-graphite/90 active:scale-[0.98] disabled:opacity-50;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-orange px-4 py-2 font-semibold text-graphite transition hover:bg-orange-deep hover:text-white active:scale-[0.98] disabled:opacity-50;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-graphite/20 bg-white px-4 py-2 font-medium text-graphite transition hover:bg-cream;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-graphite/15 bg-white px-4 py-2 font-medium text-graphite transition hover:bg-cream;
   }
   .card {
-    @apply rounded-xl border border-graphite/10 bg-white p-4 shadow-sm;
+    @apply rounded-xl border border-graphite/10 bg-white p-4 shadow-card;
   }
   .input {
-    @apply w-full rounded-lg border border-graphite/20 bg-white px-3 py-2 text-graphite outline-none focus:border-orange;
+    @apply w-full rounded-lg border border-graphite/15 bg-white px-3 py-2 text-graphite outline-none transition focus:border-orange;
   }
   .label {
-    @apply mb-1 block text-sm font-medium text-graphite;
+    @apply mb-1 block text-sm font-medium text-graphite-soft;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-graphite-soft;
+  }
+}
+
+@layer utilities {
+  /* Assinatura: grade tipo planta baixa / mapa */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, rgba(14, 59, 46, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(14, 59, 46, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .blueprint-strong {
+    background-color: #0e3b2e;
+    background-image:
+      linear-gradient(to right, rgba(201, 154, 46, 0.14) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(201, 154, 46, 0.14) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }

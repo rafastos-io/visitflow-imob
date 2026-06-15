@@ -47,7 +47,7 @@ export default function NotificationsBell() {
       >
         <span aria-hidden>🔔</span>
         {unread > 0 && (
-          <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange px-1 text-xs font-bold text-white">
+          <span className="num absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange px-1 text-xs font-bold text-graphite">
             {unread}
           </span>
         )}

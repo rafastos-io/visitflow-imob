@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   card: { backgroundColor: colors.white, borderRadius: 16, padding: 20, elevation: 2 },
   label: { color: colors.graphite, fontWeight: "600", marginBottom: 6, marginTop: 10 },
   input: { borderWidth: 1, borderColor: "#ddd", borderRadius: 10, padding: 12, fontSize: 16 },
-  button: { backgroundColor: colors.orange, borderRadius: 10, padding: 16, marginTop: 20, alignItems: "center" },
+  button: { backgroundColor: colors.graphite, borderRadius: 10, padding: 16, marginTop: 20, alignItems: "center" },
   buttonText: { color: colors.white, fontWeight: "bold", fontSize: 16 },
   hint: { textAlign: "center", marginTop: 20, color: colors.graphite, opacity: 0.6, fontSize: 12 },
 });

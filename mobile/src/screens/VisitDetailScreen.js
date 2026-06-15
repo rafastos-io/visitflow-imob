@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   section: { fontSize: 16, fontWeight: "700", color: colors.graphite, marginTop: 20, marginBottom: 8 },
   propCard: { backgroundColor: colors.white, borderRadius: 12, padding: 12, marginBottom: 8 },
   propTitle: { fontWeight: "700", color: colors.graphite },
-  btnPrimary: { backgroundColor: colors.orange, borderRadius: 12, padding: 16, alignItems: "center", marginBottom: 10 },
+  btnPrimary: { backgroundColor: colors.graphite, borderRadius: 12, padding: 16, alignItems: "center", marginBottom: 10 },
   btnText: { color: colors.white, fontWeight: "bold", fontSize: 16 },
   btnGhost: { borderWidth: 1, borderColor: colors.red, borderRadius: 12, padding: 16, alignItems: "center" },
   btnGhostText: { color: colors.red, fontWeight: "bold" },

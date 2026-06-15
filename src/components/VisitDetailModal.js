@@ -62,18 +62,27 @@ export default function VisitDetailModal({ visit, onClose, onChanged, onQuiz }) 
         </div>
 
         <div>
-          <p className="mb-2 text-sm font-semibold text-graphite">Roteiro de imóveis ({props.length})</p>
-          <div className="space-y-2">
-            {props.length === 0 && <p className="text-sm text-graphite/50">Nenhum imóvel no roteiro.</p>}
-            {props.map((vp) => (
-              <div key={vp.property?.id} className="rounded-lg border border-graphite/10 p-2 text-sm">
-                <p className="font-medium text-graphite">{vp.visit_order}. {vp.property?.title}</p>
-                <p className="text-xs text-graphite/60">
-                  {vp.property?.neighborhood} · {vp.property?.city} · {formatMoney(vp.property?.price)}
-                </p>
-              </div>
+          <p className="eyebrow mb-3">Roteiro · {props.length} {props.length === 1 ? "imóvel" : "imóveis"}</p>
+          {props.length === 0 && <p className="text-sm text-graphite-soft">Nenhum imóvel no roteiro.</p>}
+          <ol className="relative space-y-3">
+            {props.map((vp, i) => (
+              <li key={vp.property?.id} className="relative flex gap-3 pl-1">
+                {/* linha da rota */}
+                {i < props.length - 1 && (
+                  <span className="absolute left-[14px] top-7 h-[calc(100%-4px)] w-px bg-orange/40" aria-hidden />
+                )}
+                <span className="num z-10 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-orange text-sm font-bold text-graphite">
+                  {vp.visit_order}
+                </span>
+                <div className="min-w-0 flex-1 rounded-lg border border-graphite/10 bg-cream/50 p-2">
+                  <p className="truncate font-medium text-graphite">{vp.property?.title}</p>
+                  <p className="text-xs text-graphite-soft">
+                    {vp.property?.neighborhood} · {vp.property?.city} · <span className="num">{formatMoney(vp.property?.price)}</span>
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
 
         {visit.notes && (

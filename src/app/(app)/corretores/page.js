@@ -18,7 +18,10 @@ export default function CorretoresPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-graphite">Corretores</h2>
+      <div>
+        <p className="eyebrow">Equipe</p>
+        <h2 className="font-display text-3xl font-bold text-graphite">Corretores</h2>
+      </div>
       {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

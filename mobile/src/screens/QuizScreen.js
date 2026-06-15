@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
   resultStars: { fontSize: 40, color: colors.orange, marginTop: 16 },
   resultScore: { fontSize: 18, color: colors.graphite, marginTop: 8 },
   resultStatus: { color: colors.graphite, opacity: 0.7, marginTop: 6 },
-  btn: { backgroundColor: colors.orange, borderRadius: 12, paddingVertical: 16, paddingHorizontal: 40, marginTop: 30 },
+  btn: { backgroundColor: colors.graphite, borderRadius: 12, paddingVertical: 16, paddingHorizontal: 40, marginTop: 30 },
   btnText: { color: colors.white, fontWeight: "bold", fontSize: 16 },
 });

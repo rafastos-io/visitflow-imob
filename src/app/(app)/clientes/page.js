@@ -33,8 +33,11 @@ export default function ClientesPage() {
   return (
     <div className="space-y-4">
       <header className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-graphite">Clientes</h2>
-        <button className="btn-primary" onClick={() => setShow(true)}>+ Novo cliente</button>
+        <div>
+          <p className="eyebrow">Carteira</p>
+          <h2 className="font-display text-3xl font-bold text-graphite">Clientes</h2>
+        </div>
+        <button className="btn-gold" onClick={() => setShow(true)}>+ Novo cliente</button>
       </header>
 
       {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
