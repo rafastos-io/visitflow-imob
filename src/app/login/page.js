@@ -34,10 +34,10 @@ export default function LoginPage() {
       {/* Painel de marca */}
       <section className="relative hidden flex-col justify-between overflow-hidden bg-graphite p-12 text-white blueprint-strong lg:flex">
         <div>
-          <p className="eyebrow text-orange/80">Imobiliária</p>
-          <h1 className="mt-1 font-display text-4xl font-extrabold tracking-tight">
+          <h1 className="font-display text-4xl font-extrabold tracking-tight">
             VisitFlow<span className="text-orange">.</span>
           </h1>
+          <p className="eyebrow mt-1 text-white/40">Gestão de visitas</p>
         </div>
 
         <div className="max-w-md">

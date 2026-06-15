@@ -39,10 +39,10 @@ export default function AppLayout({ children }) {
     <div className="flex min-h-screen bg-cream">
       <aside className="flex w-60 flex-col bg-graphite text-white blueprint-strong" aria-label="Menu principal">
         <div className="px-5 py-6">
-          <p className="eyebrow text-orange/80">Imobiliária</p>
           <h1 className="font-display text-2xl font-extrabold leading-tight text-white">
             VisitFlow<span className="text-orange">.</span>
           </h1>
+          <p className="eyebrow mt-1 text-white/40">Gestão de visitas</p>
         </div>
         <nav className="flex-1 space-y-1 px-3">
           {nav.map((item) => {
