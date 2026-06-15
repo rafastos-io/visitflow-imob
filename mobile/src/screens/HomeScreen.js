@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View, Text, ScrollView, StyleSheet, RefreshControl } from "react-native";
+import { View, Text, ScrollView, StyleSheet, RefreshControl, TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
@@ -38,6 +38,10 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.greeting}>Olá, {user?.name?.split(" ")[0]} 👋</Text>
       <Text style={styles.sub}>{todayVisits.length} visita(s) hoje</Text>
 
+      <TouchableOpacity style={styles.cta} onPress={() => navigation.navigate("NewVisit")}>
+        <Text style={styles.ctaText}>+ Nova visita</Text>
+      </TouchableOpacity>
+
       {pending.length > 0 && (
         <View style={styles.alertBox}>
           <Text style={styles.alertText}>
@@ -66,6 +70,8 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   greeting: { fontSize: 22, fontWeight: "bold", color: colors.graphite },
   sub: { color: colors.graphite, opacity: 0.7, marginBottom: 12 },
+  cta: { backgroundColor: colors.orange, borderRadius: 12, padding: 14, alignItems: "center", marginBottom: 4 },
+  ctaText: { color: colors.graphite, fontWeight: "bold", fontSize: 15 },
   section: { fontSize: 16, fontWeight: "700", color: colors.graphite, marginTop: 16, marginBottom: 8 },
   empty: { color: colors.graphite, opacity: 0.5 },
   alertBox: { backgroundColor: "#FFF3E6", borderRadius: 12, padding: 12, marginTop: 8 },
