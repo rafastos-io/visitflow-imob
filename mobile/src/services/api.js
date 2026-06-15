@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // URL base da API REST (a mesma do deploy web na Vercel).
 // Configure em mobile/.env -> EXPO_PUBLIC_API_URL=https://seu-deploy.vercel.app/api
 // Para teste local com Expo Go use o IP da sua maquina, ex: http://192.168.0.10:3000/api
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000/api";
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL || "https://visitflow-imob.vercel.app/api";
 
 const TOKEN_KEY = "vf_token";
 const USER_KEY = "vf_user";

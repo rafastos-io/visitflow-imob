@@ -72,5 +72,5 @@ O banco armazena usuários, clientes, imóveis, visitas, imóveis vinculados às
 
 ## 5. Links
 
-- **Repositório público (GitHub):** <inserir link>
-- **Deploy (web/API):** <inserir link>
+- **Repositório público (GitHub):** https://github.com/rafastos-io/visitflow-imob
+- **Deploy (web/API):** https://visitflow-imob.vercel.app

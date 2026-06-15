@@ -22,3 +22,5 @@ mobile/web-build/
 *.pem
 npm-debug.log*
 .vercel
+
+.vercel

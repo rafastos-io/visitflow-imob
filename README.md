@@ -98,8 +98,8 @@ npx expo start              # escaneie o QR code com o Expo Go
 | `EXPO_PUBLIC_API_URL` | URL da API (`https://<deploy>.vercel.app/api`) |
 
 ## Links
-- **Deploy web/API:** _inserir após o deploy_
-- **Repositório:** _inserir link do GitHub_
+- **Deploy web/API:** https://visitflow-imob.vercel.app
+- **Repositório:** https://github.com/rafastos-io/visitflow-imob
 
 ## Funcionalidades
 - Login com dois perfis (GERENTE / CORRETOR)
