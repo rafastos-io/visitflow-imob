@@ -1,12 +1,22 @@
 import React, { useCallback, useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, Alert } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { api } from "../services/api";
 import { colors, STATUS_LABELS, formatDate, stars } from "../theme";
 
+const DATE_OPTIONS = [
+  { label: "Hoje", days: 0 },
+  { label: "Amanhã", days: 1 },
+  { label: "Em 2 dias", days: 2 },
+  { label: "Em 1 semana", days: 7 },
+];
+
 export default function VisitDetailScreen({ route, navigation }) {
   const { id } = route.params;
   const [visit, setVisit] = useState(null);
+  const [reschedule, setReschedule] = useState(false);
+  const [days, setDays] = useState(1);
+  const [time, setTime] = useState("14:00");
 
   const load = useCallback(() => {
     api(`/visits/${id}`).then(setVisit).catch((e) => Alert.alert("Erro", e.message));
@@ -17,6 +27,20 @@ export default function VisitDetailScreen({ route, navigation }) {
   async function setStatus(status) {
     try {
       await api(`/visits/${id}/status`, { method: "PATCH", body: JSON.stringify({ status }) });
+      load();
+    } catch (e) {
+      Alert.alert("Erro", e.message);
+    }
+  }
+
+  async function saveReschedule() {
+    const [h, m] = time.split(":").map((n) => parseInt(n, 10));
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    d.setHours(isNaN(h) ? 14 : h, isNaN(m) ? 0 : m, 0, 0);
+    try {
+      await api(`/visits/${id}`, { method: "PATCH", body: JSON.stringify({ scheduled_at: d.toISOString() }) });
+      setReschedule(false);
       load();
     } catch (e) {
       Alert.alert("Erro", e.message);
@@ -60,6 +84,37 @@ export default function VisitDetailScreen({ route, navigation }) {
             <Text style={styles.btnText}>Responder quiz pós-visita</Text>
           </TouchableOpacity>
         )}
+        {["MARCADA", "CONFIRMADA"].includes(visit.status) && !reschedule && (
+          <TouchableOpacity style={styles.btnSecondary} onPress={() => setReschedule(true)}>
+            <Text style={styles.btnSecondaryText}>Reagendar</Text>
+          </TouchableOpacity>
+        )}
+
+        {reschedule && (
+          <View style={styles.reschedule}>
+            <Text style={styles.reLabel}>Nova data</Text>
+            <View style={styles.wrap}>
+              {DATE_OPTIONS.map((o) => (
+                <TouchableOpacity key={o.label} style={[styles.chip, days === o.days && styles.chipOn]} onPress={() => setDays(o.days)}>
+                  <Text style={[styles.chipText, days === o.days && styles.chipTextOn]}>{o.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <View style={styles.timeRow}>
+              <Text style={styles.reLabel}>Horário</Text>
+              <TextInput style={styles.timeInput} value={time} onChangeText={setTime} maxLength={5} keyboardType="numbers-and-punctuation" />
+            </View>
+            <View style={{ flexDirection: "row", gap: 10, marginTop: 12 }}>
+              <TouchableOpacity style={[styles.btnGhostNeutral, { flex: 1 }]} onPress={() => setReschedule(false)}>
+                <Text style={styles.btnGhostNeutralText}>Voltar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.btnPrimary, { flex: 1, marginBottom: 0 }]} onPress={saveReschedule}>
+                <Text style={styles.btnText}>Salvar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
         {["MARCADA", "CONFIRMADA"].includes(visit.status) && (
           <TouchableOpacity style={styles.btnGhost} onPress={() => setStatus("CANCELADA")}>
             <Text style={styles.btnGhostText}>Cancelar visita</Text>
@@ -85,4 +140,18 @@ const styles = StyleSheet.create({
   btnText: { color: colors.white, fontWeight: "bold", fontSize: 16 },
   btnGhost: { borderWidth: 1, borderColor: colors.red, borderRadius: 12, padding: 16, alignItems: "center" },
   btnGhostText: { color: colors.red, fontWeight: "bold" },
+  btnSecondary: { borderWidth: 1, borderColor: colors.graphite, borderRadius: 12, padding: 16, alignItems: "center", marginBottom: 10 },
+  btnSecondaryText: { color: colors.graphite, fontWeight: "bold" },
+  btnGhostNeutral: { borderWidth: 1, borderColor: "#ccc", borderRadius: 12, padding: 14, alignItems: "center" },
+  btnGhostNeutralText: { color: colors.graphite, fontWeight: "600" },
+  reschedule: { backgroundColor: colors.white, borderRadius: 12, padding: 14, marginBottom: 10 },
+  reLabel: { color: colors.graphite, fontWeight: "600", marginBottom: 8 },
+  wrap: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  chip: { borderWidth: 1, borderColor: "#cdd5cf", backgroundColor: colors.white, borderRadius: 18, paddingVertical: 6, paddingHorizontal: 14 },
+  chipOn: { backgroundColor: colors.orange, borderColor: colors.orange },
+  chipText: { color: colors.graphite, fontWeight: "600", fontSize: 13 },
+  chipTextOn: { color: colors.graphite },
+  timeRow: { flexDirection: "row", alignItems: "center", gap: 12, marginTop: 12 },
+  timeInput: { borderWidth: 1, borderColor: "#cdd5cf", borderRadius: 10, paddingVertical: 8, paddingHorizontal: 14, fontSize: 16, width: 90, textAlign: "center" },
 });
+

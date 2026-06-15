@@ -9,6 +9,7 @@ const EMPTY = { name: "", phone: "", email: "", notes: "" };
 export default function ClientsScreen() {
   const [clients, setClients] = useState([]);
   const [show, setShow] = useState(false);
+  const [editId, setEditId] = useState(null);
   const [form, setForm] = useState(EMPTY);
   const [saving, setSaving] = useState(false);
 
@@ -17,19 +18,40 @@ export default function ClientsScreen() {
   }, []);
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
+  function openNew() {
+    setEditId(null);
+    setForm(EMPTY);
+    setShow(true);
+  }
+  function openEdit(c) {
+    setEditId(c.id);
+    setForm({ name: c.name || "", phone: c.phone || "", email: c.email || "", notes: c.notes || "" });
+    setShow(true);
+  }
+
   async function save() {
     if (!form.name.trim()) return Alert.alert("Atenção", "Informe o nome do cliente.");
     setSaving(true);
     try {
-      await api("/clients", { method: "POST", body: JSON.stringify(form) });
+      if (editId) await api(`/clients/${editId}`, { method: "PUT", body: JSON.stringify(form) });
+      else await api("/clients", { method: "POST", body: JSON.stringify(form) });
       setShow(false);
-      setForm(EMPTY);
       load();
     } catch (e) {
       Alert.alert("Erro", e.message);
     } finally {
       setSaving(false);
     }
+  }
+
+  function confirmDelete() {
+    Alert.alert("Excluir cliente", "Tem certeza?", [
+      { text: "Cancelar", style: "cancel" },
+      { text: "Excluir", style: "destructive", onPress: async () => {
+          try { await api(`/clients/${editId}`, { method: "DELETE" }); setShow(false); load(); }
+          catch (e) { Alert.alert("Erro", e.message); }
+        } },
+    ]);
   }
 
   return (
@@ -41,23 +63,23 @@ export default function ClientsScreen() {
         ListHeaderComponent={<Text style={styles.title}>Meus clientes</Text>}
         ListEmptyComponent={<Text style={styles.empty}>Nenhum cliente ainda. Toque em + para cadastrar.</Text>}
         renderItem={({ item }) => (
-          <View style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={() => openEdit(item)}>
             <Text style={styles.name}>{item.name}</Text>
             {!!item.phone && <Text style={styles.meta}>📞 {item.phone}</Text>}
             {!!item.email && <Text style={styles.meta}>✉ {item.email}</Text>}
             {!!item.notes && <Text style={styles.notes}>{item.notes}</Text>}
-          </View>
+          </TouchableOpacity>
         )}
       />
 
-      <TouchableOpacity style={styles.fab} onPress={() => setShow(true)} accessibilityLabel="Novo cliente">
+      <TouchableOpacity style={styles.fab} onPress={openNew} accessibilityLabel="Novo cliente">
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
 
       <Modal visible={show} animationType="slide" transparent onRequestClose={() => setShow(false)}>
         <View style={styles.backdrop}>
           <View style={styles.sheet}>
-            <Text style={styles.sheetTitle}>Novo cliente</Text>
+            <Text style={styles.sheetTitle}>{editId ? "Editar cliente" : "Novo cliente"}</Text>
             <TextInput style={styles.input} placeholder="Nome" value={form.name} onChangeText={(v) => setForm((f) => ({ ...f, name: v }))} />
             <TextInput style={styles.input} placeholder="Telefone" keyboardType="phone-pad" value={form.phone} onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))} />
             <TextInput style={styles.input} placeholder="E-mail" autoCapitalize="none" keyboardType="email-address" value={form.email} onChangeText={(v) => setForm((f) => ({ ...f, email: v }))} />
@@ -70,6 +92,11 @@ export default function ClientsScreen() {
                 <Text style={styles.btnText}>{saving ? "Salvando..." : "Salvar"}</Text>
               </TouchableOpacity>
             </View>
+            {editId && (
+              <TouchableOpacity onPress={confirmDelete} style={{ marginTop: 12, alignItems: "center" }}>
+                <Text style={{ color: colors.red, fontWeight: "600" }}>Excluir cliente</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </Modal>
@@ -85,7 +112,7 @@ const styles = StyleSheet.create({
   name: { fontSize: 16, fontWeight: "700", color: colors.graphite },
   meta: { color: colors.graphite, opacity: 0.7, marginTop: 2, fontSize: 13 },
   notes: { color: colors.graphite, opacity: 0.6, marginTop: 4, fontSize: 12, fontStyle: "italic" },
-  fab: { position: "absolute", right: 20, bottom: 24, width: 56, height: 56, borderRadius: 28, backgroundColor: colors.orange, alignItems: "center", justifyContent: "center", elevation: 4, shadowColor: "#000", shadowOpacity: 0.2, shadowRadius: 6, shadowOffset: { width: 0, height: 2 } },
+  fab: { position: "absolute", right: 20, bottom: 24, width: 56, height: 56, borderRadius: 28, backgroundColor: colors.orange, alignItems: "center", justifyContent: "center", elevation: 4 },
   fabText: { color: colors.graphite, fontSize: 30, fontWeight: "bold", marginTop: -2 },
   backdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.4)", justifyContent: "flex-end" },
   sheet: { backgroundColor: colors.white, borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 20 },

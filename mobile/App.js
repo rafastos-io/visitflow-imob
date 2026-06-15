@@ -10,9 +10,16 @@ import { colors } from "./src/theme";
 
 import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
+import VisitsScreen from "./src/screens/VisitsScreen";
 import AgendaScreen from "./src/screens/AgendaScreen";
 import ClientsScreen from "./src/screens/ClientsScreen";
+import PropertiesScreen from "./src/screens/PropertiesScreen";
+import MoreScreen from "./src/screens/MoreScreen";
+import DashboardScreen from "./src/screens/DashboardScreen";
 import HotClientsScreen from "./src/screens/HotClientsScreen";
+import CorretoresScreen from "./src/screens/CorretoresScreen";
+import RelatoriosScreen from "./src/screens/RelatoriosScreen";
+import NotificacoesScreen from "./src/screens/NotificacoesScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import VisitDetailScreen from "./src/screens/VisitDetailScreen";
 import QuizScreen from "./src/screens/QuizScreen";
@@ -45,13 +52,13 @@ function Tabs() {
         options={({ navigation }) => ({ title: "Início", headerRight: () => <NovaVisitaButton navigation={navigation} /> })}
       />
       <Tab.Screen
-        name="Agenda"
-        component={AgendaScreen}
+        name="Visitas"
+        component={VisitsScreen}
         options={({ navigation }) => ({ headerRight: () => <NovaVisitaButton navigation={navigation} /> })}
       />
       <Tab.Screen name="Clientes" component={ClientsScreen} />
-      <Tab.Screen name="Quentes" component={HotClientsScreen} options={{ title: "Quentes" }} />
-      <Tab.Screen name="Perfil" component={ProfileScreen} />
+      <Tab.Screen name="Imóveis" component={PropertiesScreen} />
+      <Tab.Screen name="Mais" component={MoreScreen} />
     </Tab.Navigator>
   );
 }
@@ -69,10 +76,7 @@ function Root() {
 
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: colors.graphite },
-        headerTintColor: colors.white,
-      }}
+      screenOptions={{ headerStyle: { backgroundColor: colors.graphite }, headerTintColor: colors.white }}
     >
       {!user ? (
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
@@ -82,6 +86,13 @@ function Root() {
           <Stack.Screen name="VisitDetail" component={VisitDetailScreen} options={{ title: "Detalhe da visita" }} />
           <Stack.Screen name="Quiz" component={QuizScreen} options={{ title: "Quiz pós-visita" }} />
           <Stack.Screen name="NewVisit" component={NewVisitScreen} options={{ title: "Nova visita" }} />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: "Dashboard" }} />
+          <Stack.Screen name="Agenda" component={AgendaScreen} options={{ title: "Agenda" }} />
+          <Stack.Screen name="Quentes" component={HotClientsScreen} options={{ title: "Clientes Quentes" }} />
+          <Stack.Screen name="Corretores" component={CorretoresScreen} options={{ title: "Corretores" }} />
+          <Stack.Screen name="Relatorios" component={RelatoriosScreen} options={{ title: "Relatórios" }} />
+          <Stack.Screen name="Notificacoes" component={NotificacoesScreen} options={{ title: "Notificações" }} />
+          <Stack.Screen name="Perfil" component={ProfileScreen} options={{ title: "Perfil" }} />
         </>
       )}
     </Stack.Navigator>
