@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "VisitFlow Imob",
+    "slug": "visitflow-imob",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#FEF9F0"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": { "supportsTablet": true },
+    "android": {
+      "adaptiveIcon": { "backgroundColor": "#FEF9F0" }
+    },
+    "web": { "bundler": "metro" }
+  }
+}

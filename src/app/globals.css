@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+html,
+body {
+  background-color: #fef9f0;
+  color: #5d5d5a;
+}
+
+/* Foco visivel para navegacao por teclado (acessibilidade) */
+*:focus-visible {
+  outline: 2px solid #fea45c;
+  outline-offset: 2px;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-orange px-4 py-2 font-semibold text-white transition hover:brightness-95 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-graphite/20 bg-white px-4 py-2 font-medium text-graphite transition hover:bg-cream;
+  }
+  .card {
+    @apply rounded-xl border border-graphite/10 bg-white p-4 shadow-sm;
+  }
+  .input {
+    @apply w-full rounded-lg border border-graphite/20 bg-white px-3 py-2 text-graphite outline-none focus:border-orange;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-graphite;
+  }
+}
